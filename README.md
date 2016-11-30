@@ -7,9 +7,6 @@
 	
 -----------------------------------------------------------
 
-
-[AAA](http://blog.csdn.net/qq1026291832/article/details/51007490 "BBB")
-
 	1、Rxjava是什么（异步库、响应式编程）
       	 一个使用Java语言基于观察者模式拓展而来的高效异步库。
      
@@ -91,6 +88,9 @@
 [RxJava部分操作符介绍 ](http://mushuichuan.com/tags/RxJava/)       ——水木川博客
 
 [Awesome-RxJava](https://github.com/lzyzsd/Awesome-RxJava)               ——hi大头鬼hi     RxJava资源的总结分享
+
+[Blog](http://blog.csdn.net/qq1026291832/article/details/51007490 "blog")
+
     
 #####值得一读的文章：
 
