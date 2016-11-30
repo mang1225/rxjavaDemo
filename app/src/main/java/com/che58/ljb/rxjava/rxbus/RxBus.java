@@ -18,12 +18,16 @@ public class RxBus {
         _bus.onNext(o);
     }
 
-    /**获取实际的Bus对象*/
+    /**
+     * 获取实际的Bus对象
+     */
     public Observable<Object> toObserverable() {
         return _bus;
     }
 
-    /**是否含有观察者*/
+    /**
+     * 是否含有观察者
+     */
     public boolean hasObservers() {
         return _bus.hasObservers();
     }
