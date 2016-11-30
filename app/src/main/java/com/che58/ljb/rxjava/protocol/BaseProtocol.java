@@ -19,12 +19,13 @@ public abstract class BaseProtocol {
 
 
     /**
-     *  创建一个工作在IO线程的被观察者(被订阅者)对象
-     *  @param url
-     *  @param method
-     *  @param params
+     * 创建一个工作在IO线程的被观察者(被订阅者)对象
+     *
+     * @param url
+     * @param method
+     * @param params
      */
-    protected  Observable<String> createObservable(final String url, final String method, final Map<String, Object> params) {
+    protected Observable<String> createObservable(final String url, final String method, final Map<String, Object> params) {
         return Observable.create(new Observable.OnSubscribe<String>() {                         //  (2)
             @Override
             public void call(Subscriber<? super String> subscriber) {
@@ -38,8 +39,8 @@ public abstract class BaseProtocol {
 
     /**
      * 为观察者（订阅者）设置返回数据
-     * */
-    protected  void setData(Subscriber<? super String> subscriber, String json) {
+     */
+    protected void setData(Subscriber<? super String> subscriber, String json) {
         if (TextUtils.isEmpty(json)) {                          //  (6)
             subscriber.onError(new Throwable("not data"));
             return;

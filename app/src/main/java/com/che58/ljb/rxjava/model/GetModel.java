@@ -10,11 +10,11 @@ public class GetModel {
     private XgoEntity entity;
 
     private class XgoEntity {
-            private Data data;
+        private Data data;
 
         private class Data {
             private int id;
-            private String  name;
+            private String name;
             private String value;
             private Links links;
 
@@ -39,8 +39,8 @@ public class GetModel {
                             ", href='" + href + '\'' +
                             '}';
                 }
+            }
         }
-    }
 
         @Override
         public String toString() {

@@ -43,15 +43,13 @@ public class NotMoreClickFragment extends RxFragment {
 
     /**
      * 3秒内不允许按钮多次点击
-     * */
+     */
     private void notMoreClick() {
-        RxView.clicks(btn_click)
-                .throttleFirst(3, TimeUnit.SECONDS)
-                .subscribe(new Action1<Void>() {
-                    @Override
-                    public void call(Void aVoid) {
-                        Toast.makeText(getActivity(), R.string.des_demo_not_more_click, Toast.LENGTH_SHORT).show();
-                    }
-                });
+        RxView.clicks(btn_click).throttleFirst(3, TimeUnit.SECONDS).subscribe(new Action1<Void>() {
+            @Override
+            public void call(Void aVoid) {
+                Toast.makeText(getActivity(), R.string.des_demo_not_more_click, Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 }

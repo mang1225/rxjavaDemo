@@ -26,14 +26,14 @@ public class TestProtocol extends BaseProtocol {
     /**
      * Post请求
      */
-    public Observable<String> text_Post(Map<String , Object> params) {
+    public Observable<String> text_Post(Map<String, Object> params) {
         return createObservable(BASE_URL, XgoHttpClient.METHOD_POST, params);
     }
 
     /**
      * Put请求
      */
-    public Observable<String> text_Put(Map<String , Object> params) {
+    public Observable<String> text_Put(Map<String, Object> params) {
         return createObservable(BASE_URL, XgoHttpClient.METHOD_PUT, params);
     }
 
@@ -42,7 +42,7 @@ public class TestProtocol extends BaseProtocol {
      */
     public Observable<String> text_Delete() {
         String path = "1";
-        return createObservable(BASE_URL+path, XgoHttpClient.METHOD_DELETE, null);
+        return createObservable(BASE_URL + path, XgoHttpClient.METHOD_DELETE, null);
     }
 
 }

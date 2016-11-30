@@ -100,19 +100,16 @@ public class MainFragment extends Fragment {
     }
 
     @OnClick(R.id.btn_reuse_subscriber)
-    void btn_reuseSubscriber(){
+    void btn_reuseSubscriber() {
         open(new ReuseSubscriberFragment());
     }
+
     /**
      * 开启新的Fragment
      */
     private void open(Fragment fragment) {
         final String tag = fragment.getClass().toString();
-        getActivity().getSupportFragmentManager()
-                .beginTransaction()
-                .addToBackStack(tag)
-                .replace(R.id.main_content, fragment, tag)
-                .commit();
+        getActivity().getSupportFragmentManager().beginTransaction().addToBackStack(tag).replace(R.id.main_content, fragment, tag).commit();
     }
 
 }

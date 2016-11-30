@@ -16,7 +16,7 @@ public class DemoApplication extends Application {
         mApp = this;
     }
 
-    public static Application getApplaction(){
+    public static Application getApplaction() {
         return mApp;
     }
 }

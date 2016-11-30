@@ -43,21 +43,14 @@ public class TimerFragment extends RxFragment {
     }
 
 
-
     private void starTimer() {
-        Observable.timer(3000 , TimeUnit.MILLISECONDS)
-                .observeOn(AndroidSchedulers.mainThread())
-                .compose(this.<Long>bindToLifecycle())
-                .subscribe(new Action1<Long>() {
-                    @Override
-                    public void call(Long aLong) {
-                       // Glide.with(TimerFragment.this).load("http://static.zuchecdn.com/wap/newversion/images/20151225fanli_app.jpg").crossFade().into(iv_welcome);
-                        iv_welcome.setVisibility(View.VISIBLE);
-                        ObjectAnimator
-                                .ofFloat(iv_welcome, "alpha", 0.0F, 1.0F)
-                                .setDuration(500)
-                                .start();
-                    }
-                });
+        Observable.timer(3000, TimeUnit.MILLISECONDS).observeOn(AndroidSchedulers.mainThread()).compose(this.<Long>bindToLifecycle()).subscribe(new Action1<Long>() {
+            @Override
+            public void call(Long aLong) {
+                // Glide.with(TimerFragment.this).load("http://static.zuchecdn.com/wap/newversion/images/20151225fanli_app.jpg").crossFade().into(iv_welcome);
+                iv_welcome.setVisibility(View.VISIBLE);
+                ObjectAnimator.ofFloat(iv_welcome, "alpha", 0.0F, 1.0F).setDuration(500).start();
+            }
+        });
     }
 }

@@ -17,9 +17,7 @@ import butterknife.ButterKnife;
 public class RxBusDemoFragment extends RxFragment {
 
     @Override
-    public View onCreateView(LayoutInflater inflater,
-                             @Nullable ViewGroup container,
-                             @Nullable Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View layout = inflater.inflate(R.layout.fragment_rxbus_demo, container, false);
         ButterKnife.bind(this, layout);
         return layout;
@@ -29,11 +27,7 @@ public class RxBusDemoFragment extends RxFragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
-        getActivity().getSupportFragmentManager()
-                .beginTransaction()
-                .replace(R.id.demo_rxbus_frag_1, new RxBusDemo_TopFragment())
-                .replace(R.id.demo_rxbus_frag_2, new RxBusDemo_Bottom3Fragment())
-                .commit();
+        getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.demo_rxbus_frag_1, new RxBusDemo_TopFragment()).replace(R.id.demo_rxbus_frag_2, new RxBusDemo_Bottom3Fragment()).commit();
     }
 
     public static class TapEvent {

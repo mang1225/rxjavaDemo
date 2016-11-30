@@ -15,15 +15,13 @@ import butterknife.OnClick;
 
 /**
  * RxBus Demo顶部的Fragment
- * */
+ */
 public class RxBusDemo_TopFragment extends RxFragment {
 
     private RxBus _rxBus;
 
     @Override
-    public View onCreateView(LayoutInflater inflater,
-                             @Nullable ViewGroup container,
-                             @Nullable Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View layout = inflater.inflate(R.layout.fragment_rxbus_top, container, false);
         ButterKnife.bind(this, layout);
         return layout;

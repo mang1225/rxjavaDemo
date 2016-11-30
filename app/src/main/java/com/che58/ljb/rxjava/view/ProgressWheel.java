@@ -87,8 +87,7 @@ public class ProgressWheel extends View {
     public ProgressWheel(Context context, AttributeSet attrs) {
         super(context, attrs);
 
-        parseAttributes(context.obtainStyledAttributes(attrs,
-                R.styleable.ProgressWheel));
+        parseAttributes(context.obtainStyledAttributes(attrs, R.styleable.ProgressWheel));
     }
 
     /**
@@ -187,8 +186,7 @@ public class ProgressWheel extends View {
 
         if (!fillRadius) {
             // Width should equal to Height, find the min value to setup the circle
-            int minValue = Math.min(layout_width - paddingLeft - paddingRight,
-                    layout_height - paddingBottom - paddingTop);
+            int minValue = Math.min(layout_width - paddingLeft - paddingRight, layout_height - paddingBottom - paddingTop);
 
             int circleDiameter = Math.min(minValue, circleRadius * 2 - barWidth * 2);
 
@@ -196,15 +194,9 @@ public class ProgressWheel extends View {
             int xOffset = (layout_width - paddingLeft - paddingRight - circleDiameter) / 2 + paddingLeft;
             int yOffset = (layout_height - paddingTop - paddingBottom - circleDiameter) / 2 + paddingTop;
 
-            circleBounds = new RectF(xOffset + barWidth,
-                    yOffset + barWidth,
-                    xOffset + circleDiameter - barWidth,
-                    yOffset + circleDiameter - barWidth);
+            circleBounds = new RectF(xOffset + barWidth, yOffset + barWidth, xOffset + circleDiameter - barWidth, yOffset + circleDiameter - barWidth);
         } else {
-            circleBounds = new RectF(paddingLeft + barWidth,
-                    paddingTop + barWidth,
-                    layout_width - paddingRight - barWidth,
-                    layout_height - paddingBottom - barWidth);
+            circleBounds = new RectF(paddingLeft + barWidth, paddingTop + barWidth, layout_width - paddingRight - barWidth, layout_height - paddingBottom - barWidth);
         }
     }
 
@@ -294,8 +286,7 @@ public class ProgressWheel extends View {
                 length = 135;
             }
 
-            canvas.drawArc(circleBounds, from, length, false,
-                    barPaint);
+            canvas.drawArc(circleBounds, from, length, false, barPaint);
         } else {
             float oldProgress = mProgress;
 
@@ -686,16 +677,15 @@ public class ProgressWheel extends View {
         private boolean fillRadius;
 
         //required field that makes Parcelables from a Parcel
-        public static final Creator<WheelSavedState> CREATOR =
-                new Creator<WheelSavedState>() {
-                    public WheelSavedState createFromParcel(Parcel in) {
-                        return new WheelSavedState(in);
-                    }
+        public static final Creator<WheelSavedState> CREATOR = new Creator<WheelSavedState>() {
+            public WheelSavedState createFromParcel(Parcel in) {
+                return new WheelSavedState(in);
+            }
 
-                    public WheelSavedState[] newArray(int size) {
-                        return new WheelSavedState[size];
-                    }
-                };
+            public WheelSavedState[] newArray(int size) {
+                return new WheelSavedState[size];
+            }
+        };
 
         WheelSavedState(Parcelable superState) {
             super(superState);
@@ -739,7 +729,7 @@ public class ProgressWheel extends View {
          * Method to call when the progress reaches a value
          * in order to avoid float precision issues, the progress
          * is rounded to a float with two decimals.
-         *
+         * <p>
          * In indeterminate mode, the callback is called each time
          * the wheel completes an animation cycle, with, the progress value is -1.0f
          *

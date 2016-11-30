@@ -28,7 +28,7 @@ public class XgoLogInterceptor implements Interceptor {
     private static final String BYTE_BODY = "-byte body)";
 
     private static final String END = "--> END ";
-    
+
     private static final Charset UTF8 = Charset.forName("UTF-8");
 
     private final Logger logger;
@@ -36,7 +36,9 @@ public class XgoLogInterceptor implements Interceptor {
     private volatile Level level = Level.NONE;
 
     public enum Level {
-        /** No logs. */
+        /**
+         * No logs.
+         */
         NONE,
         /**
          * Logs request and response lines.
@@ -92,7 +94,9 @@ public class XgoLogInterceptor implements Interceptor {
     }
 
     public interface Logger {
-        /** A {@link Logger} defaults output appropriate for the current platform. */
+        /**
+         * A {@link Logger} defaults output appropriate for the current platform.
+         */
         Logger DEFAULT = new Logger() {
             @Override
             public void log(String message) {
@@ -112,7 +116,9 @@ public class XgoLogInterceptor implements Interceptor {
         this.logger = logger;
     }
 
-    /** Change the level at which this interceptor logs. */
+    /**
+     * Change the level at which this interceptor logs.
+     */
     public XgoLogInterceptor setLevel(Level level) {
         if (level == null) throw new NullPointerException("level == null. Use Level.NONE instead.");
         this.level = level;
@@ -185,8 +191,7 @@ public class XgoLogInterceptor implements Interceptor {
                 logger.log("");
                 logger.log(buffer.readString(charset));
 
-                logger.log(END + request.method()
-                        + " (" + requestBody.contentLength() + BYTE_BODY);
+                logger.log(END + request.method() + " (" + requestBody.contentLength() + BYTE_BODY);
             }
         }
 
@@ -195,9 +200,7 @@ public class XgoLogInterceptor implements Interceptor {
         long tookMs = TimeUnit.NANOSECONDS.toMillis(System.nanoTime() - startNs);
 
         ResponseBody responseBody = response.body();
-        logger.log("<-- " + response.code() + ' ' + response.message() + ' '
-                + response.request().url() + " (" + tookMs + "ms" + (!logHeaders ? ", "
-                + responseBody.contentLength() + "-byte body" : "") + ')');
+        logger.log("<-- " + response.code() + ' ' + response.message() + ' ' + response.request().url() + " (" + tookMs + "ms" + (!logHeaders ? ", " + responseBody.contentLength() + "-byte body" : "") + ')');
 
         if (logHeaders) {
             Headers headers = response.headers();
