@@ -10,7 +10,7 @@ import android.widget.TextView;
 import com.che58.ljb.rxjava.R;
 import com.trello.rxlifecycle.components.support.RxFragment;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import rx.functions.Action1;
 import rx.subjects.PublishSubject;
@@ -21,7 +21,7 @@ import rx.subjects.PublishSubject;
  */
 public class PublishSubjectBottomFragment extends RxFragment {
 
-    @Bind(R.id.tv_result)
+    @BindView(R.id.tv_result)
     TextView tv_result;
 
     private final PublishSubject<String> publishSubject;

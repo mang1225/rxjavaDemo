@@ -13,7 +13,7 @@ import com.trello.rxlifecycle.components.support.RxFragment;
 
 import java.util.TreeMap;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import rx.android.schedulers.AndroidSchedulers;
@@ -25,7 +25,7 @@ import rx.functions.Action1;
  */
 public class NetFragment extends RxFragment {
 
-    @Bind(R.id.tv_result)
+    @BindView(R.id.tv_result)
     TextView tv_reuslt;
 
     private TestProtocol mTestProtocol;

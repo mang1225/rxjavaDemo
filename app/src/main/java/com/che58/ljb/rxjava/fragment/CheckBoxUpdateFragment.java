@@ -17,7 +17,7 @@ import com.f2prateek.rx.preferences.RxSharedPreferences;
 import com.jakewharton.rxbinding.widget.RxCompoundButton;
 import com.trello.rxlifecycle.components.support.RxFragment;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import rx.functions.Action1;
@@ -28,13 +28,13 @@ import rx.functions.Action1;
  */
 public class CheckBoxUpdateFragment extends RxFragment {
 
-    @Bind(R.id.cb_1)
+    @BindView(R.id.cb_1)
     CheckBox checkBox1;
 
-    @Bind(R.id.cb_2)
+    @BindView(R.id.cb_2)
     CheckBox checkBox2;
 
-    @Bind(R.id.btn_login)
+    @BindView(R.id.btn_login)
     Button btn_login;
 
     @Nullable
@@ -81,7 +81,7 @@ public class CheckBoxUpdateFragment extends RxFragment {
     }
 
     @OnClick(R.id.btn_login)
-    void login(){
+    void login() {
         Toast.makeText(getActivity(), R.string.login, Toast.LENGTH_SHORT).show();
     }
 

@@ -25,7 +25,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import rx.Observable;
@@ -41,13 +41,13 @@ import rx.schedulers.Schedulers;
  */
 public class DebounceFragment extends RxFragment {
 
-    @Bind(R.id.et_search)
+    @BindView(R.id.et_search)
     EditText et_search;
 
-    @Bind(R.id.iv_x)
+    @BindView(R.id.iv_x)
     ImageView iv_x;
 
-    @Bind(R.id.lv_list)
+    @BindView(R.id.lv_list)
     ListView lv_list;
     private ArrayAdapter<String> mAdapter;
 

@@ -14,7 +14,7 @@ import com.trello.rxlifecycle.components.support.RxFragment;
 
 import java.util.concurrent.TimeUnit;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import rx.functions.Action1;
 
@@ -24,7 +24,7 @@ import rx.functions.Action1;
  */
 public class NotMoreClickFragment extends RxFragment {
 
-    @Bind(R.id.btn_click)
+    @BindView(R.id.btn_click)
     Button btn_click;
 
     @Nullable

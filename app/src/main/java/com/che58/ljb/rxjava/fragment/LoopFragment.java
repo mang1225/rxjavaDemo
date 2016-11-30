@@ -20,7 +20,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import rx.Observable;
@@ -33,7 +33,7 @@ import rx.functions.Action1;
  * Created by ljb on 2016/3/28.
  */
 public class LoopFragment extends RxFragment {
-    @Bind(R.id.viewpager)
+    @BindView(R.id.viewpager)
     ViewPager mViewPager;
 
     private List<ImageView> mCacheViews = new ArrayList<>();
@@ -58,12 +58,12 @@ public class LoopFragment extends RxFragment {
     }
 
     @OnClick(R.id.btn_start_loop)
-     void startLoop() {
+    void startLoop() {
         autoLoop();
     }
 
     @OnClick(R.id.btn_stop_loop)
-     void stopLoop() {
+    void stopLoop() {
         if (subscribe_auto != null && !subscribe_auto.isUnsubscribed()) {
             subscribe_auto.unsubscribe();
         }
@@ -72,7 +72,7 @@ public class LoopFragment extends RxFragment {
     private void autoLoop() {
         if (subscribe_auto == null || subscribe_auto.isUnsubscribed()) {
             subscribe_auto = Observable.interval(3000, 3000, TimeUnit.MILLISECONDS)
-                                            //延时3000 ，每间隔3000，时间单位
+                    //延时3000 ，每间隔3000，时间单位
                     .compose(this.<Long>bindToLifecycle())
                     .observeOn(AndroidSchedulers.mainThread())
                     .subscribe(new Action1<Long>() {

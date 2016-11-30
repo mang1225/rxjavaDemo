@@ -13,7 +13,7 @@ import com.trello.rxlifecycle.components.support.RxFragment;
 
 import java.util.concurrent.TimeUnit;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import rx.Observable;
 import rx.android.schedulers.AndroidSchedulers;
@@ -25,7 +25,7 @@ import rx.functions.Action1;
  */
 public class TimerFragment extends RxFragment {
 
-    @Bind(R.id.iv_welcome)
+    @BindView(R.id.iv_welcome)
     ImageView iv_welcome;
 
     @Nullable

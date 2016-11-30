@@ -10,13 +10,13 @@ import android.widget.TextView;
 
 import com.che58.ljb.rxjava.R;
 import com.che58.ljb.rxjava.act.MainActivity;
-import com.trello.rxlifecycle.FragmentEvent;
+import com.trello.rxlifecycle.android.FragmentEvent;
 import com.trello.rxlifecycle.components.support.RxFragment;
 
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import rx.Observable;
 import rx.android.schedulers.AndroidSchedulers;
@@ -26,9 +26,9 @@ import rx.observables.ConnectableObservable;
 
 public class RxBusDemo_Bottom3Fragment extends RxFragment {
 
-    @Bind(R.id.demo_rxbus_tap_txt)
+    @BindView(R.id.demo_rxbus_tap_txt)
     TextView _tapEventTxtShow;
-    @Bind(R.id.demo_rxbus_tap_count)
+    @BindView(R.id.demo_rxbus_tap_count)
     TextView _tapEventCountShow;
     private RxBus _rxBus;
 

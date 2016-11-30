@@ -17,7 +17,7 @@ import com.trello.rxlifecycle.components.support.RxFragment;
 import java.util.ArrayList;
 import java.util.List;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import rx.Observable;
 import rx.Subscriber;
@@ -32,10 +32,10 @@ import rx.schedulers.Schedulers;
  */
 public class ZipFragment extends RxFragment {
 
-    @Bind(R.id.view_load)
+    @BindView(R.id.view_load)
     ProgressWheel loadView;
 
-    @Bind(R.id.lv_list)
+    @BindView(R.id.lv_list)
     ListView lv_list;
 
     @Nullable
