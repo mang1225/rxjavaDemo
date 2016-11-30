@@ -3,14 +3,7 @@
 	Android平台上使用RxJava的Demo
 	
 	感谢DevFactory的Mohamed Ezzat对代码的优化和建议
-	
-	
-<br/>
 
-![](http://i.imgur.com/iWI5WxY.gif)
-![](http://i.imgur.com/vjXS2pI.gif)
-
-<center>...</center>
 -----------------------------------------------------------
 
 
