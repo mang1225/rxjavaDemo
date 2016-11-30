@@ -14,7 +14,6 @@
 -----------------------------------------------------------
 
 
-[博客首页](http://blog.csdn.net/qq1026291832/article/details/51007490 "博客首页")
 
 	1、Rxjava是什么（异步库、响应式编程）
       	 一个使用Java语言基于观察者模式拓展而来的高效异步库。
@@ -64,7 +63,6 @@
 [RxJava-Android-Samples ](https://github.com/kaushikgopal/RxJava-Android-Samples)                             ——kaushikgopal
 
 
-<br/>以下是本人在工作之余写的Demo
 
 [<b>rxjava-for-android</b>](https://github.com/cn-ljb/rxjava_for_android)    
 
