@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">RxDemo</string>
+    <string name="app_name">RxJavaDemo</string>
     <string name="btn_net_request">网络请求(rxjava+okHttp)</string>
     <string name="btn_net_request2">网络请求(rxjava+okHttp+Gson)</string>
     <string name="request_get">Get请求</string>
