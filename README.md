@@ -5,12 +5,6 @@
 	感谢DevFactory的Mohamed Ezzat对代码的优化和建议
 	
 	
-<br/>
-
-![](http://i.imgur.com/iWI5WxY.gif)
-![](http://i.imgur.com/vjXS2pI.gif)
-
-<center>...</center>
 -----------------------------------------------------------
 
 
@@ -64,7 +58,6 @@
 [RxJava-Android-Samples ](https://github.com/kaushikgopal/RxJava-Android-Samples)                             ——kaushikgopal
 
 
-<br/>以下是本人在工作之余写的Demo
 
 [<b>rxjava-for-android</b>](https://github.com/cn-ljb/rxjava_for_android)    
 
