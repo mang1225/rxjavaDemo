@@ -21,8 +21,6 @@ public class Contacter {
 
     @Override
     public String toString() {
-        return "Contacter{" +
-                "name='" + name + '\'' +
-                '}';
+        return "Contacter{" + "name='" + name + '\'' + '}';
     }
 }

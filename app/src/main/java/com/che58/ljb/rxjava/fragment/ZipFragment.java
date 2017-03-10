@@ -53,25 +53,18 @@ public class ZipFragment extends RxFragment {
     }
 
     private void getContactData() {
-        Observable.zip(
-                queryContactsFromLocation(),
-                queryContactsForNet(),
-                new Func2<List<Contacter>, List<Contacter>, List<Contacter>>() {
-                    @Override
-                    public List<Contacter> call(List<Contacter> contacters, List<Contacter> contacters2) {
-                        contacters.addAll(contacters2);
-                        return contacters;
-                    }
-                }
-        ).compose(this.<List<Contacter>>bindToLifecycle())
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Action1<List<Contacter>>() {
-                    @Override
-                    public void call(List<Contacter> contacters) {
-                        initPage(contacters);
-                    }
-                });
+        Observable.zip(queryContactsFromLocation(), queryContactsForNet(), new Func2<List<Contacter>, List<Contacter>, List<Contacter>>() {
+            @Override
+            public List<Contacter> call(List<Contacter> contacters, List<Contacter> contacters2) {
+                contacters.addAll(contacters2);
+                return contacters;
+            }
+        }).compose(this.<List<Contacter>>bindToLifecycle()).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(new Action1<List<Contacter>>() {
+            @Override
+            public void call(List<Contacter> contacters) {
+                initPage(contacters);
+            }
+        });
     }
 
     private void initPage(List<Contacter> contacters) {

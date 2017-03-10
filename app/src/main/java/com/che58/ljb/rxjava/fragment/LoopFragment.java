@@ -73,9 +73,7 @@ public class LoopFragment extends RxFragment {
         if (subscribe_auto == null || subscribe_auto.isUnsubscribed()) {
             subscribe_auto = Observable.interval(3000, 3000, TimeUnit.MILLISECONDS)
                     //延时3000 ，每间隔3000，时间单位
-                    .compose(this.<Long>bindToLifecycle())
-                    .observeOn(AndroidSchedulers.mainThread())
-                    .subscribe(new Action1<Long>() {
+                    .compose(this.<Long>bindToLifecycle()).observeOn(AndroidSchedulers.mainThread()).subscribe(new Action1<Long>() {
                         @Override
                         public void call(Long aLong) {
                             int currentIndex = mViewPager.getCurrentItem();

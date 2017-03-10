@@ -16,26 +16,18 @@ public class PostModel {
 
             @Override
             public String toString() {
-                return "Data{" +
-                        "xxx='" + xxx + '\'' +
-                        '}';
+                return "Data{" + "xxx='" + xxx + '\'' + '}';
             }
         }
 
         @Override
         public String toString() {
-            return "XgoEntity{" +
-                    "data=" + data +
-                    '}';
+            return "XgoEntity{" + "data=" + data + '}';
         }
     }
 
     @Override
     public String toString() {
-        return "GetModel{" +
-                "code=" + code +
-                ", message='" + message + '\'' +
-                ", entity=" + entity +
-                '}';
+        return "GetModel{" + "code=" + code + ", message='" + message + '\'' + ", entity=" + entity + '}';
     }
 }

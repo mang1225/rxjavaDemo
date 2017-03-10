@@ -20,12 +20,7 @@ public class GetModel {
 
             @Override
             public String toString() {
-                return "Data{" +
-                        "id=" + id +
-                        ", name='" + name + '\'' +
-                        ", value='" + value + '\'' +
-                        ", links=" + links +
-                        '}';
+                return "Data{" + "id=" + id + ", name='" + name + '\'' + ", value='" + value + '\'' + ", links=" + links + '}';
             }
 
             private class Links {
@@ -34,28 +29,19 @@ public class GetModel {
 
                 @Override
                 public String toString() {
-                    return "Links{" +
-                            "rel='" + rel + '\'' +
-                            ", href='" + href + '\'' +
-                            '}';
+                    return "Links{" + "rel='" + rel + '\'' + ", href='" + href + '\'' + '}';
                 }
             }
         }
 
         @Override
         public String toString() {
-            return "XgoEntity{" +
-                    "data=" + data +
-                    '}';
+            return "XgoEntity{" + "data=" + data + '}';
         }
     }
 
     @Override
     public String toString() {
-        return "PostModel{" +
-                "code=" + code +
-                ", message='" + message + '\'' +
-                ", entity=" + entity +
-                '}';
+        return "PostModel{" + "code=" + code + ", message='" + message + '\'' + ", entity=" + entity + '}';
     }
 }
