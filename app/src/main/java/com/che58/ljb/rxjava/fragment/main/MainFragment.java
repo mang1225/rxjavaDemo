@@ -31,85 +31,74 @@ import butterknife.OnClick;
  */
 public class MainFragment extends Fragment {
 
-    @Nullable
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_main, null);
-        ButterKnife.bind(this, view);
-        return view;
-    }
+  @Nullable @Override
+  public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+    View view = inflater.inflate(R.layout.fragment_main, null);
+    ButterKnife.bind(this, view);
+    return view;
+  }
 
-    @OnClick(R.id.btn_net)
-    void btn_net() {
-        open(new NetFragment());
-    }
+  @OnClick(R.id.btn_net) void btn_net() {
+    open(new NetFragment());
+  }
 
-    @OnClick(R.id.btn_net2)
-    void btn_net2() {
-        open(new Net2Fragment());
-    }
+  @OnClick(R.id.btn_net2) void btn_net2() {
+    open(new Net2Fragment());
+  }
 
-    @OnClick(R.id.btn_not_more_click)
-    void btn_not_more_click() {
-        open(new NotMoreClickFragment());
-    }
+  @OnClick(R.id.btn_not_more_click) void btn_not_more_click() {
+    open(new NotMoreClickFragment());
+  }
 
-    @OnClick(R.id.btn_checkbox_state_update)
-    void btn_checkbox_update() {
-        open(new CheckBoxUpdateFragment());
-    }
+  @OnClick(R.id.btn_checkbox_state_update) void btn_checkbox_update() {
+    open(new CheckBoxUpdateFragment());
+  }
 
-    @OnClick(R.id.btn_text_change)
-    void btn_text_change() {
-        open(new DebounceFragment());
-    }
+  @OnClick(R.id.btn_text_change) void btn_text_change() {
+    open(new DebounceFragment());
+  }
 
-    @OnClick(R.id.btn_buffer)
-    void btn_buffer() {
-        open(new BufferFragment());
-    }
+  @OnClick(R.id.btn_buffer) void btn_buffer() {
+    open(new BufferFragment());
+  }
 
-    @OnClick(R.id.btn_zip)
-    void btn_zip() {
-        open(new ZipFragment());
-    }
+  @OnClick(R.id.btn_zip) void btn_zip() {
+    open(new ZipFragment());
+  }
 
-    @OnClick(R.id.btn_concat)
-    void btn_concat() {
-        open(new ConcatFragment());
-    }
+  @OnClick(R.id.btn_concat) void btn_concat() {
+    open(new ConcatFragment());
+  }
 
-    @OnClick(R.id.btn_loop)
-    void btn_loop() {
-        open(new LoopFragment());
-    }
+  @OnClick(R.id.btn_loop) void btn_loop() {
+    open(new LoopFragment());
+  }
 
-    @OnClick(R.id.btn_timer)
-    void btn_timer() {
-        open(new TimerFragment());
-    }
+  @OnClick(R.id.btn_timer) void btn_timer() {
+    open(new TimerFragment());
+  }
 
-    @OnClick(R.id.btn_publish)
-    void btn_publish() {
-        open(new PublishSubjectFragment());
-    }
+  @OnClick(R.id.btn_publish) void btn_publish() {
+    open(new PublishSubjectFragment());
+  }
 
-    @OnClick(R.id.btn_rxbus)
-    void btn_rxbus() {
-        open(new RxBusDemoFragment());
-    }
+  @OnClick(R.id.btn_rxbus) void btn_rxbus() {
+    open(new RxBusDemoFragment());
+  }
 
-    @OnClick(R.id.btn_reuse_subscriber)
-    void btn_reuseSubscriber() {
-        open(new ReuseSubscriberFragment());
-    }
+  @OnClick(R.id.btn_reuse_subscriber) void btn_reuseSubscriber() {
+    open(new ReuseSubscriberFragment());
+  }
 
-    /**
-     * 开启新的Fragment
-     */
-    private void open(Fragment fragment) {
-        final String tag = fragment.getClass().toString();
-        getActivity().getSupportFragmentManager().beginTransaction().addToBackStack(tag).replace(R.id.main_content, fragment, tag).commit();
-    }
-
+  /**
+   * 开启新的Fragment
+   */
+  private void open(Fragment fragment) {
+    final String tag = fragment.getClass().toString();
+    getActivity().getSupportFragmentManager()
+        .beginTransaction()
+        .addToBackStack(tag)
+        .replace(R.id.main_content, fragment, tag)
+        .commit();
+  }
 }

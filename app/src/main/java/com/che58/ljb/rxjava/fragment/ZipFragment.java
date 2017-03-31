@@ -32,87 +32,83 @@ import rx.schedulers.Schedulers;
  */
 public class ZipFragment extends RxFragment {
 
-    @BindView(R.id.view_load)
-    ProgressWheel loadView;
+  @BindView(R.id.view_load) ProgressWheel loadView;
 
-    @BindView(R.id.lv_list)
-    ListView lv_list;
+  @BindView(R.id.lv_list) ListView lv_list;
 
-    @Nullable
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_zip, null);
-        ButterKnife.bind(this, view);
-        return view;
-    }
+  @Nullable @Override
+  public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+    View view = inflater.inflate(R.layout.fragment_zip, null);
+    ButterKnife.bind(this, view);
+    return view;
+  }
 
-    @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-        getContactData();
-    }
+  @Override public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+    super.onActivityCreated(savedInstanceState);
+    getContactData();
+  }
 
-    private void getContactData() {
-        Observable.zip(queryContactsFromLocation(), queryContactsForNet(), new Func2<List<Contacter>, List<Contacter>, List<Contacter>>() {
-            @Override
-            public List<Contacter> call(List<Contacter> contacters, List<Contacter> contacters2) {
-                contacters.addAll(contacters2);
-                return contacters;
-            }
-        }).compose(this.<List<Contacter>>bindToLifecycle()).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(new Action1<List<Contacter>>() {
-            @Override
-            public void call(List<Contacter> contacters) {
-                initPage(contacters);
-            }
+  private void getContactData() {
+    Observable.zip(queryContactsFromLocation(), queryContactsForNet(),
+        new Func2<List<Contacter>, List<Contacter>, List<Contacter>>() {
+          @Override public List<Contacter> call(List<Contacter> contacters, List<Contacter> contacters2) {
+            contacters.addAll(contacters2);
+            return contacters;
+          }
+        })
+        .compose(this.<List<Contacter>>bindToLifecycle())
+        .subscribeOn(Schedulers.io())
+        .observeOn(AndroidSchedulers.mainThread())
+        .subscribe(new Action1<List<Contacter>>() {
+          @Override public void call(List<Contacter> contacters) {
+            initPage(contacters);
+          }
         });
-    }
+  }
 
-    private void initPage(List<Contacter> contacters) {
-        loadView.setVisibility(View.GONE);
-        XgoLog.d(contacters.toString());
-        lv_list.setAdapter(new ArrayAdapter<Contacter>(getActivity(), R.layout.item_list, R.id.tv_text, contacters));
-    }
+  private void initPage(List<Contacter> contacters) {
+    loadView.setVisibility(View.GONE);
+    XgoLog.d(contacters.toString());
+    lv_list.setAdapter(new ArrayAdapter<Contacter>(getActivity(), R.layout.item_list, R.id.tv_text, contacters));
+  }
 
+  /**
+   * 模拟网络联系人列表
+   */
+  private Observable<List<Contacter>> queryContactsForNet() {
+    return Observable.create(new Observable.OnSubscribe<List<Contacter>>() {
+      @Override public void call(Subscriber<? super List<Contacter>> subscriber) {
 
-    /**
-     * 模拟网络联系人列表
-     */
-    private Observable<List<Contacter>> queryContactsForNet() {
-        return Observable.create(new Observable.OnSubscribe<List<Contacter>>() {
-            @Override
-            public void call(Subscriber<? super List<Contacter>> subscriber) {
+        try {
+          Thread.sleep(3000);
+        } catch (InterruptedException e) {
+          e.printStackTrace();
+        }
 
-                try {
-                    Thread.sleep(3000);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
+        ArrayList<Contacter> contacters = new ArrayList<>();
+        contacters.add(new Contacter("net:Zeus"));
+        contacters.add(new Contacter("net:Athena"));
+        contacters.add(new Contacter("net:Prometheus"));
+        subscriber.onNext(contacters);
+        subscriber.onCompleted();
+      }
+    });
+  }
 
-                ArrayList<Contacter> contacters = new ArrayList<>();
-                contacters.add(new Contacter("net:Zeus"));
-                contacters.add(new Contacter("net:Athena"));
-                contacters.add(new Contacter("net:Prometheus"));
-                subscriber.onNext(contacters);
-                subscriber.onCompleted();
-            }
-        });
-    }
+  /**
+   * 模拟手机本地联系人查询
+   */
+  private Observable<List<Contacter>> queryContactsFromLocation() {
+    return Observable.create(new Observable.OnSubscribe<List<Contacter>>() {
+      @Override public void call(Subscriber<? super List<Contacter>> subscriber) {
 
-    /**
-     * 模拟手机本地联系人查询
-     */
-    private Observable<List<Contacter>> queryContactsFromLocation() {
-        return Observable.create(new Observable.OnSubscribe<List<Contacter>>() {
-            @Override
-            public void call(Subscriber<? super List<Contacter>> subscriber) {
-
-                ArrayList<Contacter> contacters = new ArrayList<>();
-                contacters.add(new Contacter("location:张三"));
-                contacters.add(new Contacter("location:李四"));
-                contacters.add(new Contacter("location:王五"));
-                subscriber.onNext(contacters);
-                subscriber.onCompleted();
-            }
-        });
-    }
+        ArrayList<Contacter> contacters = new ArrayList<>();
+        contacters.add(new Contacter("location:张三"));
+        contacters.add(new Contacter("location:李四"));
+        contacters.add(new Contacter("location:王五"));
+        subscriber.onNext(contacters);
+        subscriber.onCompleted();
+      }
+    });
+  }
 }
