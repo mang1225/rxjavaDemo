@@ -15,6 +15,10 @@ build/
 
 # Gradle files
 .gradle/
+gradle
+gradlew.bat
+gradlew
+gradle-wrapper*
 subProjects/facebook/build
 
 # Intellij project files
