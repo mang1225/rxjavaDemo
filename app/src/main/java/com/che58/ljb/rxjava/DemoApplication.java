@@ -8,15 +8,14 @@ import android.app.Application;
  */
 public class DemoApplication extends Application {
 
-    private static Application mApp;
+  private static Application mApp;
 
-    @Override
-    public void onCreate() {
-        super.onCreate();
-        mApp = this;
-    }
+  @Override public void onCreate() {
+    super.onCreate();
+    mApp = this;
+  }
 
-    public static Application getApplaction() {
-        return mApp;
-    }
+  public static Application getApplaction() {
+    return mApp;
+  }
 }
