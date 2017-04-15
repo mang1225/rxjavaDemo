@@ -31,8 +31,7 @@ import butterknife.OnClick;
  */
 public class MainFragment extends Fragment {
 
-  @Nullable @Override
-  public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+  @Nullable @Override public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
     View view = inflater.inflate(R.layout.fragment_main, null);
     ButterKnife.bind(this, view);
     return view;
@@ -95,10 +94,6 @@ public class MainFragment extends Fragment {
    */
   private void open(Fragment fragment) {
     final String tag = fragment.getClass().toString();
-    getActivity().getSupportFragmentManager()
-        .beginTransaction()
-        .addToBackStack(tag)
-        .replace(R.id.main_content, fragment, tag)
-        .commit();
+    getActivity().getSupportFragmentManager().beginTransaction().addToBackStack(tag).replace(R.id.main_content, fragment, tag).commit();
   }
 }
