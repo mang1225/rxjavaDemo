@@ -2,49 +2,58 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    >
 
-    <TextView
-        android:text="@string/des_demo_buffer_count"
-        style="@style/style_text"/>
+  <TextView
+      android:text="@string/des_demo_buffer_count"
+      style="@style/style_text"
+      />
 
-    <Button
-        style="@style/style_btn"
-        android:text="@string/btn_buffer_count"
-        android:id="@+id/btn_buffer_count"/>
+  <Button
+      android:id="@+id/btn_buffer_count"
+      android:text="@string/btn_buffer_count"
+      style="@style/style_btn"
+      />
 
-    <View
-        android:background="@color/not_login"
-        android:layout_width="match_parent"
-        android:layout_height="0.5dp"/>
+  <View
+      android:layout_width="match_parent"
+      android:layout_height="0.5dp"
+      android:background="@color/not_login"
+      />
 
-    <TextView
-        android:text="@string/des_demo_buffer_count_skip"
-        style="@style/style_text"/>
-    
-    <EditText
-        android:gravity="center_vertical"
-        android:singleLine="true"
-        android:textSize="10sp"
-        android:hint="@string/input_text"
-        android:id="@+id/et_input"
-        android:layout_width="match_parent"
-        android:layout_height="40dp" />
+  <TextView
+      android:text="@string/des_demo_buffer_count_skip"
+      style="@style/style_text"
+      />
 
-    <Button
-        style="@style/style_btn"
-        android:text="@string/btn_buffer_count_skip"
-        android:id="@+id/btn_buffer_count_skip"/>
+  <EditText
+      android:id="@+id/et_input"
+      android:layout_width="match_parent"
+      android:layout_height="40dp"
+      android:gravity="center_vertical"
+      android:hint="@string/input_text"
+      android:singleLine="true"
+      android:textSize="10sp"
+      />
 
-    <TextView
-        android:id="@+id/tv_output"
-        android:layout_width="match_parent"
-        android:layout_height="50dp" />
+  <Button
+      android:id="@+id/btn_buffer_count_skip"
+      android:text="@string/btn_buffer_count_skip"
+      style="@style/style_btn"
+      />
 
-    <View
-        android:background="@color/not_login"
-        android:layout_width="match_parent"
-        android:layout_height="0.5dp"/>
+  <TextView
+      android:id="@+id/tv_output"
+      android:layout_width="match_parent"
+      android:layout_height="50dp"
+      />
+
+  <View
+      android:layout_width="match_parent"
+      android:layout_height="0.5dp"
+      android:background="@color/not_login"
+      />
 
 
 </LinearLayout>
