@@ -7,14 +7,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-
-import com.che58.ljb.rxjava.R;
-import com.trello.rxlifecycle.components.support.RxFragment;
-
-import java.util.concurrent.TimeUnit;
-
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import com.che58.ljb.rxjava.R;
+import com.trello.rxlifecycle.components.support.RxFragment;
+import java.util.concurrent.TimeUnit;
 import rx.Observable;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.functions.Action1;
@@ -25,32 +22,26 @@ import rx.functions.Action1;
  */
 public class TimerFragment extends RxFragment {
 
-    @BindView(R.id.iv_welcome)
-    ImageView iv_welcome;
+  @BindView(R.id.iv_welcome) ImageView iv_welcome;
 
-    @Nullable
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_timer, null);
-        ButterKnife.bind(this, view);
-        return view;
-    }
+  @Nullable @Override public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+    View view = inflater.inflate(R.layout.fragment_timer, null);
+    ButterKnife.bind(this, view);
+    return view;
+  }
 
-    @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-        starTimer();
-    }
+  @Override public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+    super.onActivityCreated(savedInstanceState);
+    starTimer();
+  }
 
-
-    private void starTimer() {
-        Observable.timer(3000, TimeUnit.MILLISECONDS).observeOn(AndroidSchedulers.mainThread()).compose(this.<Long>bindToLifecycle()).subscribe(new Action1<Long>() {
-            @Override
-            public void call(Long aLong) {
-                // Glide.with(TimerFragment.this).load("http://static.zuchecdn.com/wap/newversion/images/20151225fanli_app.jpg").crossFade().into(iv_welcome);
-                iv_welcome.setVisibility(View.VISIBLE);
-                ObjectAnimator.ofFloat(iv_welcome, "alpha", 0.0F, 1.0F).setDuration(500).start();
-            }
-        });
-    }
+  private void starTimer() {
+    Observable.timer(3000, TimeUnit.MILLISECONDS).observeOn(AndroidSchedulers.mainThread()).compose(this.<Long>bindToLifecycle()).subscribe(new Action1<Long>() {
+      @Override public void call(Long aLong) {
+        // Glide.with(TimerFragment.this).load("http://static.zuchecdn.com/wap/newversion/images/20151225fanli_app.jpg").crossFade().into(iv_welcome);
+        iv_welcome.setVisibility(View.VISIBLE);
+        ObjectAnimator.ofFloat(iv_welcome, "alpha", 0.0F, 1.0F).setDuration(500).start();
+      }
+    });
+  }
 }
