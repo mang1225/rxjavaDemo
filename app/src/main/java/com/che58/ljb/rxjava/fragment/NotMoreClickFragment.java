@@ -6,16 +6,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.Toast;
-
+import android.widget.TextView;
+import butterknife.BindView;
+import butterknife.ButterKnife;
 import com.che58.ljb.rxjava.R;
 import com.jakewharton.rxbinding.view.RxView;
 import com.trello.rxlifecycle.components.support.RxFragment;
-
 import java.util.concurrent.TimeUnit;
-
-import butterknife.BindView;
-import butterknife.ButterKnife;
 import rx.functions.Action1;
 
 /**
@@ -24,32 +21,31 @@ import rx.functions.Action1;
  */
 public class NotMoreClickFragment extends RxFragment {
 
-    @BindView(R.id.btn_click)
-    Button btn_click;
+  @BindView(R.id.btn_click) Button btn_click;
+  @BindView(R.id.txt_show) TextView txtShow;
 
-    @Nullable
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_not_more_click, null);
-        ButterKnife.bind(this, view);
-        return view;
-    }
+  private int COUNT = 0;
 
-    @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-        notMoreClick();
-    }
+  @Nullable @Override public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+    View view = inflater.inflate(R.layout.fragment_not_more_click, null);
+    ButterKnife.bind(this, view);
+    return view;
+  }
 
-    /**
-     * 3秒内不允许按钮多次点击
-     */
-    private void notMoreClick() {
-        RxView.clicks(btn_click).throttleFirst(3, TimeUnit.SECONDS).subscribe(new Action1<Void>() {
-            @Override
-            public void call(Void aVoid) {
-                Toast.makeText(getActivity(), R.string.des_demo_not_more_click, Toast.LENGTH_SHORT).show();
-            }
-        });
-    }
+  @Override public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+    super.onActivityCreated(savedInstanceState);
+    notMoreClick();
+  }
+
+  /**
+   * 3秒内不允许按钮多次点击
+   */
+  private void notMoreClick() {
+    RxView.clicks(btn_click).throttleFirst(3, TimeUnit.SECONDS).subscribe(new Action1<Void>() {
+      @Override public void call(Void aVoid) {
+        txtShow.setText("Count-->" + COUNT++);
+        //Toast.makeText(getActivity(), R.string.des_demo_not_more_click, Toast.LENGTH_SHORT).show();
+      }
+    });
+  }
 }

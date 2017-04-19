@@ -1,20 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent"
-              android:orientation="vertical">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    >
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="20dp"
-        android:gravity="center"
-        android:text="@string/des_demo_not_more_click"
-        android:textSize="16sp"/>
+  <TextView
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_margin="20dp"
+      android:gravity="center"
+      android:text="@string/des_demo_not_more_click"
+      android:textSize="16sp"
+      />
 
-    <Button
-        android:id="@+id/btn_click"
-        style="@style/style_btn"
-        android:text="@string/click"/>
+  <Button
+      android:id="@+id/btn_click"
+      android:text="@string/click"
+      style="@style/style_btn"
+      />
+
+
+  <TextView
+      android:id="@+id/txt_show"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_margin="20dp"
+      android:gravity="center"
+      android:textSize="16sp"
+      />
+
 
 </LinearLayout>

@@ -7,18 +7,15 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-
+import butterknife.BindView;
+import butterknife.ButterKnife;
 import com.che58.ljb.rxjava.R;
 import com.che58.ljb.rxjava.model.Contacter;
 import com.che58.ljb.rxjava.utils.XgoLog;
 import com.che58.ljb.rxjava.view.ProgressWheel;
 import com.trello.rxlifecycle.components.support.RxFragment;
-
 import java.util.ArrayList;
 import java.util.List;
-
-import butterknife.BindView;
-import butterknife.ButterKnife;
 import rx.Observable;
 import rx.Subscriber;
 import rx.android.schedulers.AndroidSchedulers;
@@ -34,102 +31,87 @@ import rx.schedulers.Schedulers;
  * Created by zjh on 2016/3/26.
  */
 public class ConcatFragment extends RxFragment {
-    private static final String LOCATION = "location:";
-    private static final String NET = "net:";
+  private static final String LOCATION = "location:";
+  private static final String NET = "net:";
 
-    @BindView(R.id.view_load)
-    ProgressWheel loadView;
+  @BindView(R.id.view_load) ProgressWheel loadView;
 
-    @BindView(R.id.lv_list)
-    ListView lv_list;
+  @BindView(R.id.lv_list) ListView lv_list;
 
-    @Nullable
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_concat, null);
-        ButterKnife.bind(this, view);
-        return view;
-    }
+  @Nullable @Override public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+    View view = inflater.inflate(R.layout.fragment_concat, null);
+    ButterKnife.bind(this, view);
+    return view;
+  }
 
-    @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-        concatDemo();
-    }
+  @Override public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+    super.onActivityCreated(savedInstanceState);
+    concatDemo();
+  }
 
-
-    private void concatDemo() {
-        Observable.concat(
-                getDataFromLocation(),
-                getDataFromNet()
-        ).compose(this.<List<Contacter>>bindToLifecycle())
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Action1<List<Contacter>>() {
-                    @Override
-                    public void call(List<Contacter> contacters) {
-                        initPage(contacters);
-                    }
-                }, new Action1<Throwable>() {
-                    @Override
-                    public void call(Throwable throwable) {
-                        XgoLog.e(throwable.getMessage());
-                    }
-                }, new Action0() {
-                    @Override
-                    public void call() {
-                        XgoLog.d("onCompleted()");
-                    }
-                });
-    }
-
-    private void initPage(List<Contacter> contacters) {
-        loadView.setVisibility(View.GONE);
-        XgoLog.d(contacters.toString());
-        lv_list.setAdapter(new ArrayAdapter<>(getActivity(), R.layout.item_list, R.id.tv_text, contacters));
-    }
-
-    private Observable<List<Contacter>> getDataFromNet() {
-        return Observable.create(new Observable.OnSubscribe<List<Contacter>>() {
-            @Override
-            public void call(Subscriber<? super List<Contacter>> subscriber) {
-                try {
-                    Thread.sleep(3000);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-
-                ArrayList<Contacter> contacters = new ArrayList<>();
-                contacters.add(new Contacter(NET + "Zeus"));
-                contacters.add(new Contacter(NET + "Athena"));
-                contacters.add(new Contacter(NET + "Prometheus"));
-               // subscriber.onError(new Throwable("模拟出错"));
-                subscriber.onNext(contacters);
-                subscriber.onCompleted();
-            }
+  private void concatDemo() {
+    Observable.concat(getDataFromLocation(), getDataFromNet())
+        .compose(this.<List<Contacter>>bindToLifecycle())
+        .subscribeOn(Schedulers.io())
+        .observeOn(AndroidSchedulers.mainThread())
+        .subscribe(new Action1<List<Contacter>>() {
+          @Override public void call(List<Contacter> contacters) {
+            initPage(contacters);
+          }
+        }, new Action1<Throwable>() {
+          @Override public void call(Throwable throwable) {
+            XgoLog.e(throwable.getMessage());
+          }
+        }, new Action0() {
+          @Override public void call() {
+            XgoLog.d("onCompleted()");
+          }
         });
-    }
+  }
 
+  private void initPage(List<Contacter> contacters) {
+    loadView.setVisibility(View.GONE);
+    XgoLog.d(contacters.toString());
+    lv_list.setAdapter(new ArrayAdapter<>(getActivity(), R.layout.item_list, R.id.tv_text, contacters));
+  }
 
-    private Observable<List<Contacter>> getDataFromLocation() {
-        return Observable.create(new Observable.OnSubscribe<List<Contacter>>() {
-            @Override
-            public void call(Subscriber<? super List<Contacter>> subscriber) {
-                try {
-                    Thread.sleep(1000);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
+  private Observable<List<Contacter>> getDataFromNet() {
+    return Observable.create(new Observable.OnSubscribe<List<Contacter>>() {
+      @Override public void call(Subscriber<? super List<Contacter>> subscriber) {
+        try {
+          Thread.sleep(3000);
+        } catch (InterruptedException e) {
+          e.printStackTrace();
+        }
 
-                List<Contacter> datas = new ArrayList<>();
-                datas.add(new Contacter(LOCATION + "张三"));
-                datas.add(new Contacter(LOCATION + "李四"));
-                datas.add(new Contacter(LOCATION + "王五"));
+        ArrayList<Contacter> contacters = new ArrayList<>();
+        contacters.add(new Contacter(NET + "Zeus"));
+        contacters.add(new Contacter(NET + "Athena"));
+        contacters.add(new Contacter(NET + "Prometheus"));
+        // subscriber.onError(new Throwable("模拟出错"));
+        subscriber.onNext(contacters);
+        subscriber.onCompleted();
+      }
+    });
+  }
 
-                subscriber.onNext(datas);
-                subscriber.onCompleted();
-            }
-        });
-    }
+  private Observable<List<Contacter>> getDataFromLocation() {
+    return Observable.create(new Observable.OnSubscribe<List<Contacter>>() {
+      @Override public void call(Subscriber<? super List<Contacter>> subscriber) {
+        try {
+          Thread.sleep(1000);
+        } catch (InterruptedException e) {
+          e.printStackTrace();
+        }
 
+        List<Contacter> datas = new ArrayList<>();
+        datas.add(new Contacter(LOCATION + "张三"));
+        datas.add(new Contacter(LOCATION + "李四"));
+        datas.add(new Contacter(LOCATION + "王五"));
+
+        subscriber.onNext(datas);
+        subscriber.onCompleted();
+      }
+    });
+  }
 }
