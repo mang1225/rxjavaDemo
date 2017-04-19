@@ -6,24 +6,23 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
+import butterknife.ButterKnife;
+import butterknife.OnClick;
 import com.che58.ljb.rxjava.R;
 import com.che58.ljb.rxjava.fragment.BufferFragment;
 import com.che58.ljb.rxjava.fragment.CheckBoxUpdateFragment;
-import com.che58.ljb.rxjava.fragment.LoopFragment;
 import com.che58.ljb.rxjava.fragment.ConcatFragment;
+import com.che58.ljb.rxjava.fragment.DebounceFragment;
+import com.che58.ljb.rxjava.fragment.DemoFragment;
+import com.che58.ljb.rxjava.fragment.LoopFragment;
 import com.che58.ljb.rxjava.fragment.Net2Fragment;
+import com.che58.ljb.rxjava.fragment.NetFragment;
+import com.che58.ljb.rxjava.fragment.NotMoreClickFragment;
 import com.che58.ljb.rxjava.fragment.PublishSubjectFragment;
 import com.che58.ljb.rxjava.fragment.ReuseSubscriberFragment;
 import com.che58.ljb.rxjava.fragment.TimerFragment;
 import com.che58.ljb.rxjava.fragment.ZipFragment;
-import com.che58.ljb.rxjava.fragment.NetFragment;
-import com.che58.ljb.rxjava.fragment.NotMoreClickFragment;
-import com.che58.ljb.rxjava.fragment.DebounceFragment;
 import com.che58.ljb.rxjava.rxbus.RxBusDemoFragment;
-
-import butterknife.ButterKnife;
-import butterknife.OnClick;
 
 /**
  * 主菜单Fragment
@@ -87,6 +86,10 @@ public class MainFragment extends Fragment {
 
   @OnClick(R.id.btn_reuse_subscriber) void btn_reuseSubscriber() {
     open(new ReuseSubscriberFragment());
+  }
+
+  @OnClick(R.id.btn_demo) void btn_demo() {
+    open(new DemoFragment());
   }
 
   /**

@@ -2,20 +2,16 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
+    android:gravity="center"
+    android:padding="@dimen/activity_horizontal_margin"
     >
 
   <TextView
-      android:text="@string/des_demo_timer"
-      style="@style/style_text"
+      android:id="@+id/txt_demo"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:text="demo"
       />
 
-  <ImageView
-      android:id="@+id/iv_welcome"
-      android:layout_width="match_parent"
-      android:layout_height="240dp"
-      android:src="@drawable/pic_1"
-      android:visibility="gone"
-      />
 
 </LinearLayout>
